@@ -1,11 +1,11 @@
 const asciichart = require('asciichart');
 const { getFileCountByPattern } = require('./fileCount');
+const history = require('./localHistory');
 // get the number of files matching a regex and show them in a chart
 const [_, file, dir, regexPatternString] = process.argv;
 
 const regexPattern = new RegExp(regexPatternString);
 const fileCount = getFileCountByPattern(dir, regexPattern);
-
-const chart = [fileCount];
-
+history.save(fileCount);
+const history.getEntriesGroupedByDay();
 console.log(asciichart.plot(chart));
