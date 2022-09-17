@@ -1,3 +1,5 @@
+const path = require('path');
+
 const HISTORY_FILE_CACHE_PATH = path.join(__dirname, '.deathCountHistory');
 
 // history is saved in form {count: number, timestamp: number}
