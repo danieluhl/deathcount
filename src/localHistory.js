@@ -13,7 +13,9 @@ class HistoryCache {
     this.fileAccess.delete(HISTORY_FILE_CACHE_PATH);
   }
   getEntries() {
-    return this.fetchCachedHistory().sort((a, b) => a.timestamp - b.timestamp);
+    return this.fetchCachedHistory()
+      .sort((a, b) => a.timestamp - b.timestamp)
+      .map((entry) => entry.count);
   }
   fetchCachedHistory() {
     // try to get from cache

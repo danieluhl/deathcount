@@ -12,6 +12,6 @@ test('saves and gets latest history', () => {
   history.save(2);
   history.save(1);
   const sortedEntries = history.getEntries();
-  expect(sortedEntries.map((e) => e.count)).toEqual([5, 2, 1]);
+  expect(sortedEntries).toEqual([5, 2, 1]);
   history.clear();
 });

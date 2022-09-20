@@ -11,5 +11,5 @@ const fileCount = getFileCountByPattern(dir, regexPattern);
 const history = new HistoryCache(fileAccess);
 history.save(fileCount);
 const chart = history.getEntries();
-
+console.log(chart);
 console.log(asciichart.plot(chart));
