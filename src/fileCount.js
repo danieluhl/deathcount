@@ -4,7 +4,9 @@ const path = require('path');
 // Returns a list of files in a directory recursively. All paths are relative to
 // the basedir.
 const getFileList = (basedir, subdir = '') => {
-  let readResults = fs.readdirSync(path.join(basedir, subdir), { withFileTypes: true });
+  let readResults = fs.readdirSync(path.join(basedir, subdir), {
+    withFileTypes: true,
+  });
   // separate files from directories
   let files = readResults
     .filter((file) => !file.isDirectory())

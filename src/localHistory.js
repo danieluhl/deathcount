@@ -1,6 +1,6 @@
 const path = require('path');
 
-const HISTORY_FILE_CACHE_PATH = path.join(__dirname, '.deathCountHistory');
+const HISTORY_FILE_CACHE_PATH = path.join(__dirname, '.deathCountHistory.json');
 
 // history is saved in form {count: number, timestamp: number}
 class HistoryCache {
@@ -30,7 +30,7 @@ class HistoryCache {
     // initialize history if not already there
     const history = this.fetchCachedHistory();
     history.push({ count: entry, timestamp: Date.now() });
-    this.fileAccess.write(HISTORY_FILE_CACHE_PATH, JSON.stringify(history));
+    this.fileAccess.write(HISTORY_FILE_CACHE_PATH, history);
     this.history = history;
   }
 }
