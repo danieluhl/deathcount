@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "asciichart": "^1.5.25"
+    "asciichart": "^1.5.25",
+    "babel-eslint": "^10.1.0"
   }
 }

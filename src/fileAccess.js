@@ -5,7 +5,6 @@ module.exports = {
   read: (filePath) => {
     try {
       fs.accessSync(filePath, fs.constants.F_OK);
-      console.log(JSON.parse(fs.readFileSync(filePath)));
       return JSON.parse(fs.readFileSync(filePath));
     } catch {
       return null;

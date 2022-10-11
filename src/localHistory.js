@@ -2,7 +2,7 @@ const path = require('path');
 
 const HISTORY_FILE_CACHE_PATH = path.join(__dirname, '.deathCountHistory.json');
 
-// history is saved in form {count: number, timestamp: number}
+// history is saved in form {pattern: string, count: number, timestamp: number}
 class HistoryCache {
   constructor(fileAccess) {
     this.fileAccess = fileAccess;
@@ -12,7 +12,7 @@ class HistoryCache {
     this.history = null;
     this.fileAccess.delete(HISTORY_FILE_CACHE_PATH);
   }
-  getEntries() {
+  getCounts() {
     return this.fetchCachedHistory()
       .sort((a, b) => a.timestamp - b.timestamp)
       .map((entry) => entry.count);
@@ -26,10 +26,10 @@ class HistoryCache {
     const fileHistory = this.fileAccess.read(HISTORY_FILE_CACHE_PATH);
     return fileHistory || [];
   }
-  save(entry) {
+  save(entry, pattern) {
     // initialize history if not already there
     const history = this.fetchCachedHistory();
-    history.push({ count: entry, timestamp: Date.now() });
+    history.push({ pattern, count: entry, timestamp: Date.now() });
     this.fileAccess.write(HISTORY_FILE_CACHE_PATH, history);
     this.history = history;
   }

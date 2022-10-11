@@ -1,9 +1,10 @@
 const HistoryCache = require('../localHistory');
 
+const PATTERN = 'foo';
 const fakeData = [
-  { count: 10, timestamp: 1 },
-  { count: 3, timestamp: 2 },
-  { count: 5, timestamp: 3 },
+  { PATTERN, count: 10, timestamp: 1 },
+  { PATTERN, count: 3, timestamp: 2 },
+  { PATTERN, count: 5, timestamp: 3 },
 ];
 
 const fakeFileAccess = {
@@ -14,10 +15,10 @@ const fakeFileAccess = {
 
 test('saves and gets latest history', () => {
   const history = new HistoryCache(fakeFileAccess);
-  history.save(5);
-  history.save(2);
-  history.save(1);
-  const sortedEntries = history.getEntries();
+  history.save(5, PATTERN);
+  history.save(2, PATTERN);
+  history.save(1, PATTERN);
+  const sortedEntries = history.getCounts(PATTERN);
   expect(sortedEntries).toEqual([10, 3, 5, 5, 2, 1]);
   history.clear();
 });
