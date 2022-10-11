@@ -24,7 +24,6 @@ class HistoryCache {
     }
     // try to get from file
     const fileHistory = this.fileAccess.read(this.historyFileCachePath);
-    console.log({ fileHistory });
     return fileHistory || [];
   }
   save(entry, pattern) {
