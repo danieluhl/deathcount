@@ -11,7 +11,7 @@ const regexPattern = new RegExp(regexPatternString);
 const fileCount = getFileCountByPattern(dir, regexPattern);
 
 const history = new HistoryCache(fileAccess, dir);
-history.save(fileCount, regexPattern);
-const chart = history.getCounts(regexPattern);
+history.save(fileCount, regexPatternString);
+const chart = history.getCounts(regexPatternString);
 console.log(chart);
 console.log(asciichart.plot(chart));

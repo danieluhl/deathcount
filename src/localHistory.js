@@ -9,7 +9,7 @@ class HistoryCache {
   history = null;
   clear() {
     this.history = null;
-    this.fileAccess.delete(historyFileCachePath);
+    this.fileAccess.delete(this.historyFileCachePath);
   }
   getCounts(pattern) {
     return this.fetchCachedHistory()
@@ -23,14 +23,15 @@ class HistoryCache {
       return [...this.history];
     }
     // try to get from file
-    const fileHistory = this.fileAccess.read(historyFileCachePath);
+    const fileHistory = this.fileAccess.read(this.historyFileCachePath);
+    console.log({ fileHistory });
     return fileHistory || [];
   }
   save(entry, pattern) {
     // initialize history if not already there
     const history = this.fetchCachedHistory();
     history.push({ pattern, count: entry, timestamp: Date.now() });
-    this.fileAccess.write(historyFileCachePath, history);
+    this.fileAccess.write(this.historyFileCachePath, history);
     this.history = history;
   }
 }
