@@ -2,11 +2,8 @@ const asciichart = require('asciichart');
 const { getFileCountByPattern } = require('./fileCount');
 const HistoryCache = require('./localHistory');
 const fileAccess = require('./fileAccess');
-const config = require('./deathcount.config.js');
 // get the number of files matching a regex and show them in a chart
-// const [_, file, dir, regexPatternString] = process.argv;
-
-const { dir, regexPatternString } = config;
+const [_, file, dir, regexPatternString] = process.argv;
 
 const regexPattern = new RegExp(regexPatternString);
 const fileCount = getFileCountByPattern(dir, regexPattern);

@@ -12,8 +12,9 @@ class HistoryCache {
     this.history = null;
     this.fileAccess.delete(HISTORY_FILE_CACHE_PATH);
   }
-  getCounts() {
+  getCounts(pattern) {
     return this.fetchCachedHistory()
+      .filter((entry) => entry.pattern === pattern)
       .sort((a, b) => a.timestamp - b.timestamp)
       .map((entry) => entry.count);
   }
