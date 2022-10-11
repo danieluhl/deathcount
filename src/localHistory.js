@@ -1,16 +1,15 @@
 const path = require('path');
 
-const HISTORY_FILE_CACHE_PATH = path.join(__dirname, '.deathCountHistory.json');
-
 // history is saved in form {pattern: string, count: number, timestamp: number}
 class HistoryCache {
-  constructor(fileAccess) {
+  constructor(fileAccess, dir) {
+    this.historyFileCachePath = path.join(dir, '.deathCountHistory.json');
     this.fileAccess = fileAccess;
   }
   history = null;
   clear() {
     this.history = null;
-    this.fileAccess.delete(HISTORY_FILE_CACHE_PATH);
+    this.fileAccess.delete(historyFileCachePath);
   }
   getCounts(pattern) {
     return this.fetchCachedHistory()
@@ -24,14 +23,14 @@ class HistoryCache {
       return [...this.history];
     }
     // try to get from file
-    const fileHistory = this.fileAccess.read(HISTORY_FILE_CACHE_PATH);
+    const fileHistory = this.fileAccess.read(historyFileCachePath);
     return fileHistory || [];
   }
   save(entry, pattern) {
     // initialize history if not already there
     const history = this.fetchCachedHistory();
     history.push({ pattern, count: entry, timestamp: Date.now() });
-    this.fileAccess.write(HISTORY_FILE_CACHE_PATH, history);
+    this.fileAccess.write(historyFileCachePath, history);
     this.history = history;
   }
 }

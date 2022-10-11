@@ -1,6 +1,9 @@
 {
   "name": "deathcount",
   "version": "1.0.0",
+  "bin": {
+    "deathcount": "bin/index.js"
+  },
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -14,5 +17,15 @@
   "dependencies": {
     "asciichart": "^1.5.25",
     "babel-eslint": "^10.1.0"
-  }
+  },
+  "description": "Given a directory and regex pattern, this will find the number of instances of that pattern in the directory. Sort of like grep.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieluhl/deathcount.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/danieluhl/deathcount/issues"
+  },
+  "homepage": "https://github.com/danieluhl/deathcount#readme"
 }
