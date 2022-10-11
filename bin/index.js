@@ -10,7 +10,7 @@ const [_, file, dir, regexPatternString] = process.argv;
 const regexPattern = new RegExp(regexPatternString);
 const fileCount = getFileCountByPattern(dir, regexPattern);
 
-const history = new HistoryCache(fileAccess);
+const history = new HistoryCache(fileAccess, dir);
 history.save(fileCount, regexPattern);
 const chart = history.getCounts(regexPattern);
 console.log(chart);
