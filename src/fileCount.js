@@ -9,7 +9,9 @@ const getFileList = (basedir, subdir = '') => {
   });
   // separate files from directories
   let files = readResults
-    .filter((file) => !file.isDirectory())
+    .filter((file) => {
+      return !file.isDirectory() && !file.name.includes('deathCountHistory')
+    })
     .map(({ name }) => `${subdir}${subdir ? '/' : ''}${name}`);
 
   const dirs = readResults
