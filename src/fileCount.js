@@ -10,7 +10,7 @@ const getFileList = (basedir, subdir = '') => {
   // separate files from directories
   let files = readResults
     .filter((file) => {
-      return !file.isDirectory() && !file.name.includes('deathCountHistory')
+      return !file.isDirectory() && !file.name.includes('deathCountHistory');
     })
     .map(({ name }) => `${subdir}${subdir ? '/' : ''}${name}`);
 
@@ -44,7 +44,5 @@ const getFileCountByPattern = (basedir, regexPattern) => {
 };
 
 module.exports = {
-  getFileList,
   filterFilesContainingPattern,
-  getFileCountByPattern,
 };

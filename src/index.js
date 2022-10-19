@@ -1,5 +1,5 @@
 const asciichart = require('asciichart');
-const { getFileCountByPattern } = require('../src/fileCount');
+const { getFileCountByPattern } = require('../src/globCount');
 const HistoryCache = require('../src/localHistory');
 const fileAccess = require('../src/fileAccess');
 

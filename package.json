@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "asciichart": "^1.5.25",
-    "babel-eslint": "^10.1.0"
+    "babel-eslint": "^10.1.0",
+    "fast-glob": "^3.2.12"
   },
   "description": "Given a directory and regex pattern, this will find the number of instances of that pattern in the directory. Sort of like grep.",
   "repository": {
