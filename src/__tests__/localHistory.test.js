@@ -1,3 +1,5 @@
+/* global jest */
+
 const HistoryCache = require('../localHistory');
 
 const PATTERN = 'foo';

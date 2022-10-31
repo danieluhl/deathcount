@@ -10,7 +10,7 @@ const main = (dir, regexPatternString) => {
   const history = new HistoryCache(fileAccess, dir);
   history.save(fileCount, regexPatternString);
   const chart = history.getCounts(regexPatternString);
-  console.log(asciichart.plot(chart));
+  console.log(asciichart.plot(chart, {height: 20}));
 };
 
 module.exports = main;
